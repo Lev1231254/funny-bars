@@ -1,16 +1,15 @@
 #include <SFML/Graphics.hpp>
+#include "bars.hpp"
 
 int main()
 {
     // create the window
     sf::RenderWindow window(sf::VideoMode({800, 600}), "My window");
 
-    sf::CircleShape greenCircle(50.f);
-    greenCircle.setFillColor(sf::Color(100, 250, 50));
-
-    sf::RectangleShape redRectangle({120, 50});
-    redRectangle.setFillColor(sf::Color::Red);
-    redRectangle.setPosition({300, 300});
+    FunnyBars theBars(10, 100);
+    theBars.setPosition(300, 300);
+    theBars.barsNum = 100;
+    
 
 
     
@@ -27,8 +26,7 @@ int main()
         // clear the window with black color
         window.clear(sf::Color::Black);
 
-        window.draw(greenCircle);
-        window.draw(redRectangle);
+        theBars.drawFunnyBars(window);
 
         window.display();
     }
