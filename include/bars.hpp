@@ -10,8 +10,8 @@ private:
 public:
     float barWidth = 0; 
     float barMaxHeight = 0;
-    float posX = 0;
-    float posY = 0;
+    float tablePosX = 0;
+    float tablePosY = 0;
     float barsNum = 0;
     float totalWidth = 0;
     float* barsHeights;
