@@ -2,23 +2,49 @@
 #include <SFML/Graphics.hpp>
 
 
-FunnyBars::FunnyBars(float w, float h) : barWidth(w), barHeight(h) {}
+
+
+FunnyBars::FunnyBars() {}
 
 void FunnyBars::setPosition(float x, float y) {
     posX = x;
     posY = y;
 }
 
-bool FunnyBars::isCompleted() {
-    return barWidth && barHeight && barsNum;
+
+void FunnyBars::setBarHeights(float* heights, int len){
+
+    if (len == barsNum){
+        barsHeights = new float[len];
+
+        for (int i = 0; i < len; i++){
+            barsHeights[i] = heights[i];
+
+            if (heights[i] > barMaxHeight) barMaxHeight = heights[i];
+        }
+    }
+    else {
+        std::cout << "Length of a given array and number of bars are not equal\n";
+        errorReported = true;
+    }
+
 }
 
+
+
+bool FunnyBars::isCompleted() {
+    return barWidth && barMaxHeight && barsNum;
+}
+
+
 void FunnyBars::drawFunnyBars(sf::RenderWindow &window) {
-    if (this->isCompleted()) {
+    //if error was reported, it doesnt do anything. If wasn't, it works the same
+
+    if (this->isCompleted() && !errorReported) {
         float barPosX = posX;
 
-        for (int i = 0; i < barsNum - 1; i++) {
-            sf::RectangleShape bar({barWidth, barHeight});
+        for (int i = 0; i < barsNum; i++) {
+            sf::RectangleShape bar({barWidth, barsHeights[i]});
             bar.setFillColor(sf::Color::White);
             bar.setPosition({barPosX, posY});
 
@@ -26,8 +52,11 @@ void FunnyBars::drawFunnyBars(sf::RenderWindow &window) {
             barPosX += 2 * barWidth;
         }
 
-        totalLength = barPosX + barWidth - posX ;
-    } else {
-        std::cout << "The bars are not full" << std::endl;
+        totalWidth = barPosX + barWidth - posX ;
+        std::cout << "Drew bars succesfully!\n";
+
+    } else if (!errorReported){
+        std::cout << "The bars are not ready\n";
+        errorReported = true;
     }
 }

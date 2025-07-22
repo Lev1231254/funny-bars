@@ -5,19 +5,27 @@
 #include <iostream>
 
 class FunnyBars {
+private: 
+    bool errorReported = 0;
 public:
     float barWidth = 0; 
-    float barHeight = 0;
+    float barMaxHeight = 0;
     float posX = 0;
     float posY = 0;
     float barsNum = 0;
-    float totalLength = 0;
+    float totalWidth = 0;
+    float* barsHeights;
+
     
 
 
-    FunnyBars(float w, float h);
+    FunnyBars();
 
     void setPosition(float x, float y);
+
+
+    void setBarHeights(float* heights, int n);
+
 
     bool isCompleted();
 

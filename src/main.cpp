@@ -6,8 +6,20 @@ int main()
     // create the window
     sf::RenderWindow window(sf::VideoMode({800, 600}), "My window");
 
-    FunnyBars theBars(10, 100);
-    theBars.barsNum = 100;
+    FunnyBars theBars;
+    theBars.barsNum = 10;
+    theBars.barWidth = 10;
+
+    int n = 10;
+    float* testHeights = new float[n];
+
+    for (int i = 0; i < 10; i++){
+        testHeights[i] = i * 20;
+    }
+
+
+
+    theBars.setBarHeights(testHeights, n);
     
 
 
