@@ -7,7 +7,6 @@ int main()
     sf::RenderWindow window(sf::VideoMode({800, 600}), "My window");
 
     FunnyBars theBars(10, 100);
-    theBars.setPosition(300, 300);
     theBars.barsNum = 100;
     
 

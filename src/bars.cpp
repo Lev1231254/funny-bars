@@ -15,7 +15,7 @@ bool FunnyBars::isCompleted() {
 
 void FunnyBars::drawFunnyBars(sf::RenderWindow &window) {
     if (this->isCompleted()) {
-        int barPosX = posX;
+        float barPosX = posX;
 
         for (int i = 0; i < barsNum - 1; i++) {
             sf::RectangleShape bar({barWidth, barHeight});
