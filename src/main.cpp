@@ -3,14 +3,12 @@
 
 int main()
 {
-    // create the window
-    sf::RenderWindow window(sf::VideoMode({800, 600}), "My window");
+    sf::RenderWindow window(sf::VideoMode({800, 600}), "THE FUNNY BARS");
 
     sf::View view({500, 500}, {800, 800});
     window.setView(view);
 
-    //amount of bars
-    int n = 21;
+    int n = 21;  //amount of bars
 
     FunnyBars theBars;
 
@@ -32,23 +30,20 @@ int main()
     
     while (window.isOpen())
     {
-        // check all the window's events that were triggered since the last iteration of the loop
-        
+
         while (const std::optional event = window.pollEvent())
         {
-            // "close requested" event: we close the window
+
             if (event->is<sf::Event::Closed>())
                 window.close();
             if (const auto* resized = event->getIf<sf::Event::Resized>())
             {
-                // update the view to the new size of the window
                 sf::FloatRect visibleArea({0.f, 0.f}, sf::Vector2f(resized->size));
                 window.setView(sf::View(visibleArea));
             }
         }
         
 
-        // clear the window with black color
         window.clear(sf::Color::Black);
 
         theBars.drawBars(window);

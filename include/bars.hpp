@@ -35,5 +35,7 @@ public:
 
     void drawFrame(sf::RenderWindow &window);
 
+    void drawCurrentDancingPos(sf::RenderWindow & window, float time);
+
 };
 #endif
