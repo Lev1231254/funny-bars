@@ -47,7 +47,7 @@ int main()
         window.clear(sf::Color::Black);
 
         theBars.drawBars(window);
-        //theBars.drawFrame(window);
+        theBars.drawFrameDown(window);
 
         window.display();
     }

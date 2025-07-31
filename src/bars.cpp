@@ -70,30 +70,40 @@ void FunnyBars::drawBars(sf::RenderWindow &window) {
 }
 
 
-void FunnyBars::drawFrame(sf::RenderWindow &window){
-    //draw up, down, left, right rectangles
+void FunnyBars::drawFrameUp(sf::RenderWindow &window){
     sf::RectangleShape rectUp({totalBarsWidth + 2 * (frameMargin + frameThickness), frameThickness});
     rectUp.setPosition({tablePosX, tablePosY});
     rectUp.setFillColor(sf::Color::White);
+    window.draw(rectUp);
+}
 
 
+void FunnyBars::drawFrameDown(sf::RenderWindow &window){
     sf::RectangleShape rectDown({totalBarsWidth + 2 * (frameMargin + frameThickness), frameThickness});
     rectDown.setPosition({tablePosX, tablePosY + frameThickness + 2 * frameMargin + barMaxHeight});
     rectDown.setFillColor(sf::Color::White);
-    
+    window.draw(rectDown);
+}
 
+void FunnyBars::drawFrameLeft(sf::RenderWindow &window){
     sf::RectangleShape rectLeft({frameThickness, barMaxHeight + 2 * (frameMargin + frameThickness)});
     rectLeft.setPosition({tablePosX, tablePosY});
     rectLeft.setFillColor(sf::Color::White);
+    window.draw(rectLeft);
+}
 
-
+void FunnyBars::drawFrameRight(sf::RenderWindow &window){
     sf::RectangleShape rectRight({frameThickness, barMaxHeight + 2 * (frameMargin + frameThickness)});
     rectRight.setPosition({tablePosX + frameThickness + 2 * frameMargin + totalBarsWidth, tablePosY});
     rectRight.setFillColor(sf::Color::White);
-
-
-    window.draw(rectUp);
-    window.draw(rectDown);
-    window.draw(rectLeft);
     window.draw(rectRight);
+}
+
+
+void FunnyBars::drawFrame(sf::RenderWindow &window){
+    //draw up, down, left, right rectangles
+    drawFrameUp(window);
+    drawFrameDown(window);
+    drawFrameLeft(window);
+    drawFrameRight(window);
 }

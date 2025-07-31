@@ -33,6 +33,14 @@ public:
 
     void drawBars(sf::RenderWindow &window);
 
+    void drawFrameUp(sf::RenderWindow &window);
+
+    void drawFrameDown(sf::RenderWindow &window);
+
+    void drawFrameLeft(sf::RenderWindow &window);
+
+    void drawFrameRight(sf::RenderWindow &window);
+
     void drawFrame(sf::RenderWindow &window);
 
     void drawCurrentDancingPos(sf::RenderWindow & window, float time);
